@@ -1,18 +1,18 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
+// import React from 'react';
+// // import PropTypes from 'prop-types';
 
-class Select extends React.Component {
-  render() {
-    return (
-      <label>
-        <select >
-          
-        </select>
-      </label>
-    );
-  }
-}
+// class FilledSelect extends React.Component {
+//   render() {
+//     return (
+//       <label>
+//         <select >
 
-Select.propTypes = {};
+//         </select>
+//       </label>
+//     );
+//   }
+// }
 
-export default Select;
+// Select.propTypes = {};
+
+// export default FilledSelect;

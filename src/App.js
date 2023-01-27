@@ -12,12 +12,19 @@ class App extends React.Component {
     trunfo: false,
   };
 
+  handleChange = () => {
+    console.log('Alouuuuuuuuuuuu');
+  };
+
   render() {
     return (
-      <div>
+      <main>
         <h1>Tryunfo</h1>
-        <Form infos={ { ...this.state } } />
-      </div>
+        <Form
+          infos={ { ...this.state } }
+          handleChange={ this.handleChange }
+        />
+      </main>
     );
   }
 }

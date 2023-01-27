@@ -11,6 +11,7 @@ class Input extends React.Component {
       value,
       handleChange,
       checked,
+      disabled,
     } = this.props;
 
     return (
@@ -26,6 +27,7 @@ class Input extends React.Component {
           name={ name }
           key={ name }
           checked={ checked }
+          disabled={ disabled }
         />
       </label>
     );
@@ -35,6 +37,7 @@ class Input extends React.Component {
 Input.defaultProps = {
   value: '',
   checked: false,
+  disabled: false,
 };
 
 Input.propTypes = {
@@ -45,6 +48,7 @@ Input.propTypes = {
   value: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
   checked: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 export default Input;

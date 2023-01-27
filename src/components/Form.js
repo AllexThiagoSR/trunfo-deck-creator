@@ -14,6 +14,7 @@ class Form extends React.Component {
       onSaveButtonClick,
       isSaveButtonDisabled,
       cardTrunfo,
+      hasTrunfo,
     } = this.props;
     const atributs = ['Attr1', 'Attr2', 'Attr3'];
     const { props } = this;
@@ -31,7 +32,7 @@ class Form extends React.Component {
           key="name"
         />
         <br />
-        <label key="description-input" htmlFor="description">
+        <label htmlFor="description">
           Descrição
           <br />
           <textarea
@@ -40,23 +41,28 @@ class Form extends React.Component {
             name="cardDescription"
             value={ cardDescription }
             onChange={ onInputChange }
+            key="description-input"
           />
         </label>
         <br />
         {
           atributs.map((attr, index) => (
-            <label key={ attr } htmlFor={ `attr${index + 1}` }>
-              { attr }
-              <input
-                id={ `attr${index + 1}` }
-                name={ `card${attr}` }
-                value={ props[`card${attr}`] }
-                type="number"
-                onChange={ onInputChange }
-                data-testid={ `attr${index + 1}-input` }
-                key={ attr }
-              />
-            </label>
+            <>
+              <label key={ attr } htmlFor={ `attr${index + 1}` }>
+                { attr }
+                <br />
+                <input
+                  id={ `attr${index + 1}` }
+                  name={ `card${attr}` }
+                  value={ props[`card${attr}`] }
+                  type="number"
+                  onChange={ onInputChange }
+                  data-testid={ `attr${index + 1}-input` }
+                  key={ attr }
+                />
+              </label>
+              <br />
+            </>
           ))
         }
         <br />
@@ -78,12 +84,13 @@ class Form extends React.Component {
           testid="trunfo-input"
           handleChange={ onInputChange }
           checked={ cardTrunfo }
+          disabled={ hasTrunfo }
         />
         <br />
         <FilledSelect
           key="rarity"
           options={ ['normal', 'raro', 'muito raro'] }
-          name="rarity"
+          name="cardRare"
           handleChange={ onInputChange }
           labelText="Raridade"
           value={ cardRare }
@@ -120,6 +127,7 @@ Form.propTypes = {
   cardTrunfo: PropTypes.bool,
   onSaveButtonClick: PropTypes.func.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
 };
 
 export default Form;

@@ -34,7 +34,7 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   testid: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  value: PropTypes.any.isRequired,
+  value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 

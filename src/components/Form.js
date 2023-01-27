@@ -49,7 +49,7 @@ class Form extends React.Component {
                 handleChange={ handleChange }
                 key={ attr }
               />
-              <br key="br1" />
+              <br />
             </>
           ))
         }

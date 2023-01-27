@@ -6,11 +6,17 @@ import FilledSelect from './FilledSelect';
 class Form extends React.Component {
   render() {
     const {
-      infos: { cardName, description, image, trunfo, rarity },
-      handleChange,
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      onInputChange,
+      onSaveButtonClick,
+      isSaveButtonDisabled,
+      cardTrunfo,
     } = this.props;
-    const { infos } = this.props;
-    const atributs = ['Attr01', 'Attr02', 'Attr03'];
+    const atributs = ['Attr1', 'Attr2', 'Attr3'];
+    const { props } = this;
 
     return (
       <form>
@@ -21,7 +27,7 @@ class Form extends React.Component {
           testid="name-input"
           name="cardName"
           value={ cardName }
-          handleChange={ handleChange }
+          handleChange={ onInputChange }
           key="name"
         />
         <br />
@@ -31,91 +37,89 @@ class Form extends React.Component {
           <textarea
             id="description"
             data-testid="description-input"
-            name="description"
-            value={ description }
-            onChange={ handleChange }
+            name="cardDescription"
+            value={ cardDescription }
+            onChange={ onInputChange }
           />
         </label>
         <br />
         {
           atributs.map((attr, index) => (
-            <>
-              <Input
-                labelText={ attr }
+            <label key={ attr } htmlFor={ `attr${index + 1}` }>
+              { attr }
+              <input
+                id={ `attr${index + 1}` }
+                name={ `card${attr}` }
+                value={ props[`card${attr}`] }
                 type="number"
-                testid={ `attr${index + 1}-input` }
-                name={ `attr${index + 1}` }
-                value={ infos[`attr${index + 1}`] }
-                handleChange={ handleChange }
+                onChange={ onInputChange }
+                data-testid={ `attr${index + 1}-input` }
                 key={ attr }
               />
-              <br />
-            </>
+            </label>
           ))
         }
         <br />
         <Input
           key="image"
           labelText="Imagem"
-          name="image"
-          value={ image }
+          name="cardImage"
+          value={ cardImage }
           type="text"
           testid="image-input"
-          handleChange={ handleChange }
+          handleChange={ onInputChange }
         />
         <br />
         <Input
           key="trunfo"
           labelText="Super Trunfo"
-          name="trunfo"
-          value={ trunfo }
+          name="cardTrunfo"
           type="checkbox"
           testid="trunfo-input"
-          handleChange={ handleChange }
+          handleChange={ onInputChange }
+          checked={ cardTrunfo }
         />
         <br />
         <FilledSelect
           key="rarity"
           options={ ['normal', 'raro', 'muito raro'] }
           name="rarity"
-          handleChange={ handleChange }
+          handleChange={ onInputChange }
           labelText="Raridade"
-          value={ rarity }
+          value={ cardRare }
           testid="rare-input"
         />
         <br />
-        <button key="save-button" data-testid="save-button">Salvar</button>
+        <button
+          key="save-button"
+          data-testid="save-button"
+          onClick={ onSaveButtonClick }
+          disabled={ isSaveButtonDisabled }
+        >
+          Salvar
+        </button>
       </form>
     );
   }
 }
 
 Form.defaultProps = {
-  trunfo: false,
   cardName: '',
-  description: '',
-  image: '',
-  rarity: 'normal',
+  cardDescription: '',
+  cardImage: '',
+  cardRare: 'normal',
+  cardTrunfo: false,
 };
 
 Form.propTypes = {
-  handleChange: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
   cardName: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  trunfo: PropTypes.bool,
-  rarity: PropTypes.string,
-  infos: PropTypes.shape({
-    cardName: PropTypes.string,
-    description: PropTypes.string,
-    image: PropTypes.string,
-    trunfo: PropTypes.bool,
-    attr1: PropTypes.number,
-    attr2: PropTypes.number,
-    attr3: PropTypes.number,
-    handleChange: PropTypes.func,
-    rarity: PropTypes.string,
-  }).isRequired,
+  cardDescription: PropTypes.string,
+  cardImage: PropTypes.string,
+  cardRare: PropTypes.string,
+  cardTrunfo: PropTypes.bool,
+  onSaveButtonClick: PropTypes.func.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
 };
 
 export default Form;

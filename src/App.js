@@ -4,17 +4,20 @@ import Form from './components/Form';
 class App extends React.Component {
   state = {
     cardName: '',
-    attr1: 0,
-    attr2: 0,
-    attr3: 0,
-    description: '',
-    image: '',
-    trunfo: false,
-    rarity: 'normal',
+    cardDescription: '',
+    cardImage: '',
+    cardRare: 'normal',
+    cardTrunfo: false,
+    hasTrunfo: false,
+    isSaveButtonDisabled: false,
   };
 
   handleChange = () => {
     console.log('Alouuuuuuuuuuuu');
+  };
+
+  handleClick = (event) => {
+    event.preventDefault();
   };
 
   render() {
@@ -22,8 +25,9 @@ class App extends React.Component {
       <main>
         <h1>Tryunfo</h1>
         <Form
-          infos={ { ...this.state } }
-          handleChange={ this.handleChange }
+          { ...this.state }
+          onInputChange={ this.handleChange }
+          onSaveButtonClick={ this.handleClick }
         />
       </main>
     );

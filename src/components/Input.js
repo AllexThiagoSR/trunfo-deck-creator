@@ -10,10 +10,11 @@ class Input extends React.Component {
       name,
       value,
       handleChange,
+      checked,
     } = this.props;
 
     return (
-      <label key={ name } htmlFor={ name }>
+      <label htmlFor={ name }>
         { labelText }
         { type === 'checkbox' ? '' : <br /> }
         <input
@@ -23,19 +24,27 @@ class Input extends React.Component {
           value={ value }
           onChange={ handleChange }
           name={ name }
+          key={ name }
+          checked={ checked }
         />
       </label>
     );
   }
 }
 
+Input.defaultProps = {
+  value: '',
+  checked: false,
+};
+
 Input.propTypes = {
   labelText: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   testid: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
+  checked: PropTypes.bool,
 };
 
 export default Input;

@@ -10,6 +10,7 @@ class App extends React.Component {
     description: '',
     image: '',
     trunfo: false,
+    rarity: 'normal',
   };
 
   handleChange = () => {

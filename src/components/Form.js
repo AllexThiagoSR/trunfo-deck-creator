@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input';
-// import FilledSelect from './FilledSelect';
+import FilledSelect from './FilledSelect';
 
 class Form extends React.Component {
   render() {
-    const { infos: { cardName, description, image, trunfo }, handleChange } = this.props;
+    const {
+      infos: { cardName, description, image, trunfo, rarity },
+      handleChange,
+    } = this.props;
     const { infos } = this.props;
     const atributs = ['Attr01', 'Attr02', 'Attr03'];
 
@@ -71,7 +74,15 @@ class Form extends React.Component {
           handleChange={ handleChange }
         />
         <br />
-        {/* <FilledSelect /> */}
+        <FilledSelect
+          key="rarity"
+          options={ ['normal', 'raro', 'muito raro'] }
+          name="rarity"
+          handleChange={ handleChange }
+          labelText="Raridade"
+          value={ rarity }
+          testid="rare-input"
+        />
         <br />
         <button key="save-button" data-testid="save-button">Salvar</button>
       </form>
@@ -84,6 +95,7 @@ Form.defaultProps = {
   cardName: '',
   description: '',
   image: '',
+  rarity: 'normal',
 };
 
 Form.propTypes = {
@@ -92,6 +104,7 @@ Form.propTypes = {
   description: PropTypes.string,
   image: PropTypes.string,
   trunfo: PropTypes.bool,
+  rarity: PropTypes.string,
   infos: PropTypes.shape({
     cardName: PropTypes.string,
     description: PropTypes.string,
@@ -101,6 +114,7 @@ Form.propTypes = {
     attr2: PropTypes.number,
     attr3: PropTypes.number,
     handleChange: PropTypes.func,
+    rarity: PropTypes.string,
   }).isRequired,
 };
 

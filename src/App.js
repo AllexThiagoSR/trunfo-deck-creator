@@ -7,14 +7,19 @@ class App extends React.Component {
     cardName: '',
     cardDescription: '',
     cardImage: '',
-    cardRare: 'normal',
+    cardRare: '',
     cardTrunfo: false,
     hasTrunfo: false,
+    cardAttr1: '',
+    cardAttr2: '',
+    cardAttr3: '',
     isSaveButtonDisabled: false,
   };
 
-  handleChange = () => {
-    console.log('Alouuuuuuuuuuuu');
+  handleChange = ({ target: { name, type, checked, value } }) => {
+    this.setState({
+      [name]: (type === 'checkbox' ? checked : value),
+    });
   };
 
   handleClick = (event) => {

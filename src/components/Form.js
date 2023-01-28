@@ -4,6 +4,10 @@ import Input from './Input';
 import FilledSelect from './FilledSelect';
 
 class Form extends React.Component {
+  hasTrunfoInDeck = (has, input) => (
+    has ? 'Você já tem um Super Trunfo em seu baralho' : input
+  );
+
   render() {
     const {
       cardName,
@@ -16,6 +20,18 @@ class Form extends React.Component {
       cardTrunfo,
       hasTrunfo,
     } = this.props;
+
+    const checkBoxInput = (<Input
+      key="trunfo"
+      labelText="Super Trunfo"
+      name="cardTrunfo"
+      type="checkbox"
+      testid="trunfo-input"
+      handleChange={ onInputChange }
+      checked={ cardTrunfo }
+      disabled={ hasTrunfo }
+    />);
+
     const atributs = ['Attr1', 'Attr2', 'Attr3'];
     const { props } = this;
 
@@ -76,16 +92,7 @@ class Form extends React.Component {
           handleChange={ onInputChange }
         />
         <br />
-        <Input
-          key="trunfo"
-          labelText="Super Trunfo"
-          name="cardTrunfo"
-          type="checkbox"
-          testid="trunfo-input"
-          handleChange={ onInputChange }
-          checked={ cardTrunfo }
-          disabled={ hasTrunfo }
-        />
+        { this.hasTrunfoInDeck(hasTrunfo, checkBoxInput) }
         <br />
         <FilledSelect
           key="rarity"

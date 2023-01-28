@@ -50,15 +50,23 @@ class App extends React.Component {
     });
   };
 
+  checkSuperTrunfo = () => {
+    const { cardTrunfo } = this.state;
+    if (cardTrunfo === true) {
+      this.setState({ hasTrunfo: true });
+    }
+  };
+
   handleChange = ({ target: { name, type, checked, value } }) => {
     this.setState({
       [name]: (type === 'checkbox' ? checked : value),
     }, this.checkDisableButtonConditions);
   };
 
-  createCardObject = (quantityIdDig) => (
-    { id: generateId(quantityIdDig), ...this.filterCardInfosObject() }
-  );
+  createCardObject = (quantityIdDig) => {
+    const { cardTrunfo } = this.state;
+    return { id: generateId(quantityIdDig), cardTrunfo, ...this.filterCardInfosObject() };
+  };
 
   saveCard = () => {
     const quantityIdDig = 6;
@@ -71,6 +79,7 @@ class App extends React.Component {
   handleClick = (event) => {
     event.preventDefault();
     this.saveCard();
+    this.checkSuperTrunfo();
 
     this.setState({ cardName: '',
       cardDescription: '',
@@ -78,7 +87,8 @@ class App extends React.Component {
       cardRare: 'normal',
       cardAttr1: '0',
       cardAttr2: '0',
-      cardAttr3: '0' }, this.checkDisableButtonConditions);
+      cardAttr3: '0',
+      cardTrunfo: false }, this.checkDisableButtonConditions);
   };
 
   render() {

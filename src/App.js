@@ -14,6 +14,7 @@ class App extends React.Component {
     cardAttr2: '0',
     cardAttr3: '0',
     isSaveButtonDisabled: true,
+    savedCards: {},
   };
 
   checkMissingInfos = (...infos) => infos.some((value) => value === '');
@@ -25,13 +26,14 @@ class App extends React.Component {
   checkLimitAtributs = (limit, ...attrs) => attrs
     .some((attr) => parseInt(attr, 10) > limit || parseInt(attr, 10) < 0);
 
+  filterCardInformations = () => Object
+    .values(this.state).filter((info) => typeof info === 'string');
+
   checkDisableButtonConditions = () => {
     const maxSum = 210;
     const limit = 90;
-    const stateInfos = Object
-      .values(this.state).filter((info) => typeof info === 'string');
+    const stateInfos = this.filterCardInformations();
     const missingAnyInfo = this.checkMissingInfos(...stateInfos);
-    console.log(stateInfos);
     const attrsValidValues = this
       .checkAtributsValues(maxSum, stateInfos[4], stateInfos[5], stateInfos[6]);
     const attrsLimitValues = this
@@ -50,6 +52,16 @@ class App extends React.Component {
 
   handleClick = (event) => {
     event.preventDefault();
+
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardRare: 'normal',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+    });
   };
 
   render() {

@@ -56,14 +56,22 @@ class App extends React.Component {
     }, this.checkDisableButtonConditions);
   };
 
-  handleClick = (event) => {
-    event.preventDefault();
+  createCardObject = (quantityIdDig) => (
+    { id: generateId(quantityIdDig), ...this.filterCardInfosObject() }
+  );
+
+  saveCard = () => {
     const quantityIdDig = 6;
-    const newCard = { id: generateId(quantityIdDig), ...this.filterCardInfosObject() };
     const { savedCards } = this.state;
     this.setState({
-      savedCards: [...savedCards, newCard],
+      savedCards: [...savedCards, this.createCardObject(quantityIdDig)],
     });
+  };
+
+  handleClick = (event) => {
+    event.preventDefault();
+    this.saveCard();
+
     this.setState({ cardName: '',
       cardDescription: '',
       cardImage: '',

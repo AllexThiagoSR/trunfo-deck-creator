@@ -28,21 +28,15 @@ class App extends React.Component {
   checkDisableButtonConditions = () => {
     const maxSum = 210;
     const limit = 90;
-    const { cardName, cardImage, cardDescription, cardRare,
-      cardAttr1, cardAttr2, cardAttr3 } = this.state;
-    const missingAnyInfo = this.checkMissingInfos(
-      cardName,
-      cardImage,
-      cardDescription,
-      cardRare,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-    );
+    const stateInfos = Object
+      .values(this.state).filter((info) => typeof info === 'string');
+    const missingAnyInfo = this.checkMissingInfos(...stateInfos);
+    console.log(stateInfos);
     const attrsValidValues = this
-      .checkAtributsValues(maxSum, cardAttr1, cardAttr2, cardAttr3);
+      .checkAtributsValues(maxSum, stateInfos[4], stateInfos[5], stateInfos[6]);
     const attrsLimitValues = this
-      .checkLimitAtributs(limit, cardAttr1, cardAttr2, cardAttr3);
+      .checkLimitAtributs(limit, stateInfos[4], stateInfos[5], stateInfos[6]);
+
     this.setState({
       isSaveButtonDisabled: (missingAnyInfo || attrsValidValues || attrsLimitValues),
     });

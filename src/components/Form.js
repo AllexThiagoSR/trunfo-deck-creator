@@ -110,16 +110,13 @@ class Form extends React.Component {
   }
 }
 
-Form.defaultProps = {
-  cardName: '',
+Form.defaultProps = { cardName: '',
   cardDescription: '',
   cardImage: '',
   cardRare: 'normal',
-  cardTrunfo: false,
-};
+  cardTrunfo: false };
 
-Form.propTypes = {
-  onInputChange: PropTypes.func.isRequired,
+Form.propTypes = { onInputChange: PropTypes.func.isRequired,
   cardName: PropTypes.string,
   cardDescription: PropTypes.string,
   cardImage: PropTypes.string,
@@ -127,7 +124,6 @@ Form.propTypes = {
   cardTrunfo: PropTypes.bool,
   onSaveButtonClick: PropTypes.func.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
-};
+  hasTrunfo: PropTypes.bool.isRequired };
 
 export default Form;

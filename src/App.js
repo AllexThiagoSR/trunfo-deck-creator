@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import generateId from './generateId';
 
 class App extends React.Component {
   state = {
@@ -14,7 +15,7 @@ class App extends React.Component {
     cardAttr2: '0',
     cardAttr3: '0',
     isSaveButtonDisabled: true,
-    savedCards: {},
+    savedCards: [],
   };
 
   checkMissingInfos = (...infos) => infos.some((value) => value === '');
@@ -28,6 +29,11 @@ class App extends React.Component {
 
   filterCardInformations = () => Object
     .values(this.state).filter((info) => typeof info === 'string');
+
+  filterCardInfosObject = () => Object
+    .entries(this.state).reduce((acc, [key, value]) => (
+      typeof value === 'string' ? { ...acc, [key]: value } : acc
+    ), {});
 
   checkDisableButtonConditions = () => {
     const maxSum = 210;
@@ -52,16 +58,19 @@ class App extends React.Component {
 
   handleClick = (event) => {
     event.preventDefault();
-
+    const quantityIdDig = 6;
+    const newCard = { id: generateId(quantityIdDig), ...this.filterCardInfosObject() };
+    const { savedCards } = this.state;
     this.setState({
-      cardName: '',
+      savedCards: [...savedCards, newCard],
+    });
+    this.setState({ cardName: '',
       cardDescription: '',
       cardImage: '',
       cardRare: 'normal',
       cardAttr1: '0',
       cardAttr2: '0',
-      cardAttr3: '0',
-    });
+      cardAttr3: '0' }, this.checkDisableButtonConditions);
   };
 
   render() {

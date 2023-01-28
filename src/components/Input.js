@@ -15,7 +15,7 @@ class Input extends React.Component {
     } = this.props;
 
     return (
-      <label htmlFor={ name }>
+      <label key={ name } htmlFor={ name }>
         { labelText }
         { type === 'checkbox' ? '' : <br /> }
         <input

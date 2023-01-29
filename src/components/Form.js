@@ -29,7 +29,6 @@ class Form extends React.Component {
       testid="trunfo-input"
       handleChange={ onInputChange }
       checked={ cardTrunfo }
-      disabled={ hasTrunfo }
     />);
 
     const atributs = ['Attr1', 'Attr2', 'Attr3'];

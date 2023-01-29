@@ -92,6 +92,16 @@ class App extends React.Component {
       cardTrunfo: false }, this.checkDisableButtonConditions);
   };
 
+  deleteCard = ({ target: { value } }) => {
+    const idToRemove = value;
+    const { savedCards, hasTrunfo } = this.state;
+    const cardToRemove = savedCards.find(({ id }) => id === idToRemove);
+    this.setState({
+      savedCards: savedCards.filter(({ id }) => id !== idToRemove),
+      hasTrunfo: (cardToRemove ? !cardToRemove.cardTrunfo : hasTrunfo),
+    });
+  };
+
   render() {
     const { savedCards } = this.state;
     return (
@@ -107,7 +117,7 @@ class App extends React.Component {
         <div>
           <Card { ...this.state } />
         </div>
-        <SavedCards cards={ savedCards } />
+        <SavedCards cards={ savedCards } removeCardFunc={ this.deleteCard } />
       </main>
     );
   }

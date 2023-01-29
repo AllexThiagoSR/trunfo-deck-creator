@@ -4,14 +4,20 @@ import Card from './Card';
 
 class SavedCards extends React.Component {
   render() {
-    const { cards } = this.props;
+    const { cards, removeCardFunc } = this.props;
     return (
       <div>
         {
           cards.map((card) => (
             <div key={ card.id }>
               <Card { ...card } />
-              <button data-testid="delet-button">Excluir</button>
+              <button
+                data-testid="delete-button"
+                onClick={ removeCardFunc }
+                value={ card.id }
+              >
+                Excluir
+              </button>
             </div>
           ))
         }
@@ -31,6 +37,7 @@ SavedCards.propTypes = {
     cardAttr3: PropTypes.string,
     cardTrunfo: PropTypes.bool,
   })).isRequired,
+  removeCardFunc: PropTypes.func.isRequired,
 };
 
 export default SavedCards;

@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import SavedCards from './components/SavedCarts';
 import generateId from './generateId';
 
 class App extends React.Component {
@@ -106,11 +107,7 @@ class App extends React.Component {
         <div>
           <Card { ...this.state } />
         </div>
-        <div>
-          {
-            savedCards.map((card) => <Card key={ card.id } { ...card } />)
-          }
-        </div>
+        <SavedCards cards={ savedCards } />
       </main>
     );
   }

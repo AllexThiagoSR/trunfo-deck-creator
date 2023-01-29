@@ -5,7 +5,7 @@ import FilledSelect from './FilledSelect';
 
 class Filters extends React.Component {
   render() {
-    const { filterName, filterRare, onInputChange } = this.props;
+    const { filterName, filterRare, onInputChange, filterTrunfo } = this.props;
     return (
       <form>
         <legend>Filtros de Busca</legend>
@@ -16,7 +16,7 @@ class Filters extends React.Component {
           name="filterName"
           value={ filterName }
           handleChange={ onInputChange }
-          key="name"
+          disabled={ filterTrunfo }
         />
         <br />
         <FilledSelect
@@ -26,6 +26,15 @@ class Filters extends React.Component {
           labelText="Raridade"
           value={ filterRare }
           testid="rare-filter"
+          disabled={ filterTrunfo }
+        />
+        <Input
+          labelText="Super Trunfo"
+          name="filterTrunfo"
+          type="checkbox"
+          testid="trunfo-filter"
+          handleChange={ onInputChange }
+          checked={ filterTrunfo }
         />
       </form>
     );
@@ -36,6 +45,7 @@ Filters.propTypes = {
   filterName: PropTypes.string.isRequired,
   filterRare: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  filterTrunfo: PropTypes.bool.isRequired,
 };
 
 export default Filters;

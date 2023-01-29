@@ -7,18 +7,20 @@ class SavedCards extends React.Component {
   state = {
     filterName: '',
     filterRare: 'todas',
+    filterTrunfo: false,
   };
 
-  handleChangeFilters = ({ target: { value, name } }) => {
+  handleChangeFilters = ({ target: { value, name, type, checked } }) => {
     this.setState({
-      [name]: value,
+      [name]: (type === 'checkbox' ? checked : value),
     });
   };
 
   render() {
     const { cards, removeCardFunc } = this.props;
-    const filteredCards = cards.filter(({ cardName, cardRare }) => {
-      const { filterName, filterRare } = this.state;
+    const filteredCards = cards.filter(({ cardName, cardRare, cardTrunfo }) => {
+      const { filterName, filterRare, filterTrunfo } = this.state;
+      if (filterTrunfo) return cardTrunfo;
       let rarityFilter = filterRare === cardRare;
       if (filterRare === 'todas') rarityFilter = cardRare.includes('');
       return (cardName.includes(filterName) && rarityFilter);

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 class FilledSelect extends React.Component {
   render() {
-    const { name, value, options, labelText, handleChange, testid } = this.props;
+    const {
+      name, value, options, labelText, handleChange, testid, disabled } = this.props;
 
     return (
       <label htmlFor={ name }>
@@ -15,6 +16,7 @@ class FilledSelect extends React.Component {
           onChange={ handleChange }
           data-testid={ testid }
           name={ name }
+          disabled={ disabled }
         >
           {
             options.map((opt) => (
@@ -29,6 +31,10 @@ class FilledSelect extends React.Component {
   }
 }
 
+FilledSelect.defaultProps = {
+  disabled: false,
+};
+
 FilledSelect.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   name: PropTypes.string.isRequired,
@@ -36,6 +42,7 @@ FilledSelect.propTypes = {
   labelText: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   testid: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
 };
 
 export default FilledSelect;

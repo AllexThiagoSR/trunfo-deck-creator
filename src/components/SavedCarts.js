@@ -1,14 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
+import Filters from './Filters';
 
 class SavedCards extends React.Component {
+  state = {
+    filterName: '',
+    filterRare: 'todas',
+  };
+
+  handleChangeFilters = ({ target: { value, name } }) => {
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
     const { cards, removeCardFunc } = this.props;
+    const filteredCards = cards.filter(({ cardName, cardRare }) => {
+      const { filterName, filterRare } = this.state;
+      let rarityFilter = filterRare === cardRare;
+      if (filterRare === 'todas') rarityFilter = cardRare.includes('');
+      return (cardName.includes(filterName) && rarityFilter);
+    });
     return (
       <div>
+        <Filters { ... this.state } onInputChange={ this.handleChangeFilters } />
         {
-          cards.map((card) => (
+          filteredCards.map((card) => (
             <div key={ card.id }>
               <Card { ...card } />
               <button

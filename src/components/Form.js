@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input';
 import FilledSelect from './FilledSelect';
+import '../styles/Form.css';
 
 class Form extends React.Component {
   hasTrunfoInDeck = (has, input) => (
@@ -35,82 +36,90 @@ class Form extends React.Component {
     const { props } = this;
 
     return (
-      <form>
-        <legend key="title">Adicione nova carta</legend>
-        <Input
-          labelText="Nome"
-          type="text"
-          testid="name-input"
-          name="cardName"
-          value={ cardName }
-          handleChange={ onInputChange }
-          key="name"
-        />
-        <br />
-        <label htmlFor="description">
-          Descrição
-          <br />
-          <textarea
-            id="description"
-            data-testid="description-input"
-            name="cardDescription"
-            value={ cardDescription }
-            onChange={ onInputChange }
-            key="description-input"
+      <form className="form">
+        <fieldset>
+          <legend key="title">Adicione uma nova carta</legend>
+          <Input
+            labelText="Nome"
+            type="text"
+            testid="name-input"
+            name="cardName"
+            value={ cardName }
+            handleChange={ onInputChange }
+            key="name"
+            className="text-input"
           />
-        </label>
-        <br />
-        {
-          atributs.map((attr, index) => (
-            <>
-              <label key={ attr } htmlFor={ `attr${index + 1}` }>
-                { attr }
-                <br />
-                <input
-                  id={ `attr${index + 1}` }
-                  name={ `card${attr}` }
-                  value={ props[`card${attr}`] }
-                  type="number"
-                  onChange={ onInputChange }
-                  data-testid={ `attr${index + 1}-input` }
+          <br />
+          <label htmlFor="description">
+            Descrição
+            <br />
+            <textarea
+              id="description"
+              data-testid="description-input"
+              name="cardDescription"
+              value={ cardDescription }
+              onChange={ onInputChange }
+              key="description-input"
+              className="text-input"
+            />
+          </label>
+          <br />
+          <div className="flex-container">
+            {
+              atributs.map((attr, index) => (
+                <label
                   key={ attr }
-                />
-              </label>
-              <br />
-            </>
-          ))
-        }
-        <br />
-        <Input
-          key="image"
-          labelText="Imagem"
-          name="cardImage"
-          value={ cardImage }
-          type="text"
-          testid="image-input"
-          handleChange={ onInputChange }
-        />
-        <br />
-        { this.hasTrunfoInDeck(hasTrunfo, checkBoxInput) }
-        <br />
-        <FilledSelect
-          key="rarity"
-          options={ ['normal', 'raro', 'muito raro'] }
-          name="cardRare"
-          handleChange={ onInputChange }
-          labelText="Raridade"
-          value={ cardRare }
-          testid="rare-input"
-        />
-        <br />
-        <button
-          key="save-button"
-          data-testid="save-button"
-          onClick={ onSaveButtonClick }
-          disabled={ isSaveButtonDisabled }
-        >
-          Salvar
-        </button>
+                  className="number-input"
+                  htmlFor={ `attr${index + 1}` }
+                >
+                  { attr }
+                  <br />
+                  <input
+                    id={ `attr${index + 1}` }
+                    name={ `card${attr}` }
+                    value={ props[`card${attr}`] }
+                    type="number"
+                    onChange={ onInputChange }
+                    data-testid={ `attr${index + 1}-input` }
+                    key={ attr }
+                  />
+                </label>
+              ))
+            }
+          </div>
+          <br />
+          <Input
+            key="image"
+            labelText="Imagem"
+            name="cardImage"
+            value={ cardImage }
+            type="text"
+            testid="image-input"
+            handleChange={ onInputChange }
+            className="text-input"
+          />
+          <br />
+          { this.hasTrunfoInDeck(hasTrunfo, checkBoxInput) }
+          <br />
+          <FilledSelect
+            key="rarity"
+            options={ ['normal', 'raro', 'muito raro'] }
+            name="cardRare"
+            handleChange={ onInputChange }
+            labelText="Raridade"
+            value={ cardRare }
+            testid="rare-input"
+          />
+          <br />
+          <button
+            key="save-button"
+            data-testid="save-button"
+            onClick={ onSaveButtonClick }
+            disabled={ isSaveButtonDisabled }
+          >
+            Salvar
+          </button>
+        </fieldset>
       </form>
     );
   }

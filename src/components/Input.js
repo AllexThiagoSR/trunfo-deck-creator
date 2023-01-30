@@ -12,6 +12,7 @@ class Input extends React.Component {
       handleChange,
       checked,
       disabled,
+      className,
     } = this.props;
 
     return (
@@ -19,6 +20,7 @@ class Input extends React.Component {
         { labelText }
         { type === 'checkbox' ? '' : <br /> }
         <input
+          className={ className }
           id={ name }
           type={ type }
           data-testid={ testid }
@@ -38,6 +40,7 @@ Input.defaultProps = {
   value: '',
   checked: false,
   disabled: false,
+  className: '',
 };
 
 Input.propTypes = {
@@ -49,6 +52,7 @@ Input.propTypes = {
   handleChange: PropTypes.func.isRequired,
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 export default Input;

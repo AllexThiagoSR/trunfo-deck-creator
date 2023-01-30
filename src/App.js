@@ -3,6 +3,7 @@ import Card from './components/Card';
 import Form from './components/Form';
 import SavedCards from './components/SavedCarts';
 import generateId from './generateId';
+import './styles/App.css';
 
 class App extends React.Component {
   state = {
@@ -64,16 +65,16 @@ class App extends React.Component {
     }, this.checkDisableButtonConditions);
   };
 
-  createCardObject = (quantityIdDig) => {
+  createCardObject = () => {
+    const quantityIdDig = 6;
     const { cardTrunfo } = this.state;
     return { id: generateId(quantityIdDig), cardTrunfo, ...this.filterCardInfosObject() };
   };
 
   saveCard = () => {
-    const quantityIdDig = 6;
     const { savedCards } = this.state;
     this.setState({
-      savedCards: [...savedCards, this.createCardObject(quantityIdDig)],
+      savedCards: [...savedCards, this.createCardObject()],
     });
   };
 
@@ -106,17 +107,15 @@ class App extends React.Component {
     const { savedCards } = this.state;
     return (
       <main>
-        <div>
-          <h1>Tryunfo</h1>
+        <h1>Tryunfo</h1>
+        <section className="form-preview-section">
           <Form
             { ...this.state }
             onInputChange={ this.handleChange }
             onSaveButtonClick={ this.handleClick }
           />
-        </div>
-        <div>
           <Card { ...this.state } />
-        </div>
+        </section>
         <SavedCards
           cards={ savedCards }
           removeCardFunc={ this.deleteCard }

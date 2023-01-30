@@ -26,7 +26,7 @@ class SavedCards extends React.Component {
       return (cardName.includes(filterName) && rarityFilter);
     });
     return (
-      <div>
+      <ul>
         <Filters { ... this.state } onInputChange={ this.handleChangeFilters } />
         {
           filteredCards.map((card) => (
@@ -42,7 +42,7 @@ class SavedCards extends React.Component {
             </div>
           ))
         }
-      </div>
+      </ul>
     );
   }
 }

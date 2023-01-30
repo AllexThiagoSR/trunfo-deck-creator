@@ -1,0 +1,8 @@
+h1 {
+  text-align: center;
+}
+
+.form-preview-section {
+  display: flex;
+  justify-content: space-around;
+}

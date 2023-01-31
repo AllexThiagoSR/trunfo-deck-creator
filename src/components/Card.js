@@ -25,7 +25,7 @@ class Card extends React.Component {
         </div>
         <div className="info-container">
           <h2 data-testid="name-card" className="card-name">{ cardName }</h2>
-          <p data-testid="description-card">{ cardDescription }</p>
+          <p data-testid="description-card" className="desc-card">{ cardDescription }</p>
           <p data-testid="attr1-card">{ cardAttr1 }</p>
           <p data-testid="attr2-card">{ cardAttr2 }</p>
           <p data-testid="attr3-card">{ cardAttr3 }</p>

@@ -15,8 +15,8 @@
 }
 
 .img-container {
-  height: 300px;
-  margin: 0 0 50px;
+  height: 350px;
+  margin: 0 0 15px;
 }
 
 .info-container {
@@ -39,12 +39,16 @@
   background-color: white;
   display: flex;
   font-size: 20px;
-  height: 47px;
+  height: 40px;
   justify-content: center;
   left: 170px;
   position: absolute;
   text-transform: uppercase;
-  top: 289px;
+  top: 339px;
   transform: rotate(-30deg);
   width: 152px;
+}
+
+.desc-card {
+  z-index: 1;
 }

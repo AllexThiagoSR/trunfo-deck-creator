@@ -3,6 +3,7 @@ h1 {
 }
 
 .form-preview-section {
+  align-items: center;
   display: flex;
   justify-content: space-around;
 }

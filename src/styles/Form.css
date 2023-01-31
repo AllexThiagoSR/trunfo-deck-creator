@@ -6,9 +6,9 @@
 
 fieldset {
   display: flex;
-  padding: 25px;
-  margin: 0;
   flex-direction: column;
+  margin: 0;
+  padding: 25px;
 }
 
 .text-input {

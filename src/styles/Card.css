@@ -1,6 +1,50 @@
 .card {
-  width: 270px;
   border: 7px black double;
   border-radius: 10px;
+  height: 450px;
   padding: 30px;
+  position: relative;
+  width: 270px;
+}
+
+.card img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+.img-container {
+  height: 300px;
+  margin: 0 0 50px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-container * {
+  margin: 0;
+}
+
+.card-name {
+  position: absolute;
+  top: 3px;
+}
+
+.trunfo {
+
+  /* align-items: center; */
+  background-color: white;
+  display: flex;
+  font-size: 20px;
+  height: 47px;
+  justify-content: center;
+  left: 170px;
+  position: absolute;
+  text-transform: uppercase;
+  top: 289px;
+  transform: rotate(-30deg);
+  width: 152px;
 }

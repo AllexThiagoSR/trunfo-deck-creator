@@ -7,35 +7,36 @@ class Filters extends React.Component {
   render() {
     const { filterName, filterRare, onInputChange, filterTrunfo } = this.props;
     return (
-      <form>
+      <form className="filter-form">
         <legend>Filtros de Busca</legend>
-        <Input
-          labelText="Nome"
-          type="text"
-          testid="name-filter"
-          name="filterName"
-          value={ filterName }
-          handleChange={ onInputChange }
-          disabled={ filterTrunfo }
-        />
-        <br />
-        <FilledSelect
-          options={ ['todas', 'normal', 'raro', 'muito raro'] }
-          name="filterRare"
-          handleChange={ onInputChange }
-          labelText="Raridade"
-          value={ filterRare }
-          testid="rare-filter"
-          disabled={ filterTrunfo }
-        />
-        <Input
-          labelText="Super Trunfo"
-          name="filterTrunfo"
-          type="checkbox"
-          testid="trunfo-filter"
-          handleChange={ onInputChange }
-          checked={ filterTrunfo }
-        />
+        <div>
+          <Input
+            labelText="Nome"
+            type="text"
+            testid="name-filter"
+            name="filterName"
+            value={ filterName }
+            handleChange={ onInputChange }
+            disabled={ filterTrunfo }
+          />
+          <FilledSelect
+            options={ ['todas', 'normal', 'raro', 'muito raro'] }
+            name="filterRare"
+            handleChange={ onInputChange }
+            labelText="Raridade"
+            value={ filterRare }
+            testid="rare-filter"
+            disabled={ filterTrunfo }
+          />
+          <Input
+            labelText="Super Trunfo"
+            name="filterTrunfo"
+            type="checkbox"
+            testid="trunfo-filter"
+            handleChange={ onInputChange }
+            checked={ filterTrunfo }
+          />
+        </div>
       </form>
     );
   }

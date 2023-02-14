@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
-import SavedCards from './components/SavedCarts';
+import SavedCards from './components/SavedCards';
 import generateId from './generateId';
 import './styles/App.css';
 

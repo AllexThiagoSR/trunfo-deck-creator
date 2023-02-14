@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
 import Filters from './Filters';
+import '../styles/SavedCards.css';
 
 class SavedCards extends React.Component {
   state = {
@@ -26,23 +27,27 @@ class SavedCards extends React.Component {
       return (cardName.includes(filterName) && rarityFilter);
     });
     return (
-      <ul>
+      <div className="saved-cards-container">
         <Filters { ... this.state } onInputChange={ this.handleChangeFilters } />
-        {
-          filteredCards.map((card) => (
-            <div key={ card.id }>
-              <Card { ...card } />
-              <button
-                data-testid="delete-button"
-                onClick={ removeCardFunc }
-                value={ card.id }
-              >
-                Excluir
-              </button>
-            </div>
-          ))
-        }
-      </ul>
+        <ul>
+          {
+            filteredCards.map((card) => (
+              <li key={ card.id }>
+                <div>
+                  <Card { ...card } />
+                  <button
+                    data-testid="delete-button"
+                    onClick={ removeCardFunc }
+                    value={ card.id }
+                  >
+                    Excluir
+                  </button>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     );
   }
 }

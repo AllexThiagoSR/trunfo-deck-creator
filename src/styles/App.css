@@ -2,6 +2,10 @@
   color: var(--page-font-color);
 }
 
+input, select, textarea {
+  color: black;
+}
+
 header {
   padding: 50px;
 }

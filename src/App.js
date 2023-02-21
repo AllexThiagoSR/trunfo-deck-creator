@@ -96,14 +96,16 @@ class App extends React.Component {
     this.saveCard();
     this.checkSuperTrunfo();
 
-    this.setState({ cardName: '',
+    this.setState({
+      cardName: '',
       cardDescription: '',
       cardImage: '',
       cardRare: 'normal',
       cardAttr1: '0',
       cardAttr2: '0',
       cardAttr3: '0',
-      cardTrunfo: false }, this.checkDisableButtonConditions);
+      cardTrunfo: false,
+    }, this.checkDisableButtonConditions);
   };
 
   deleteCard = ({ target: { value } }) => {
@@ -119,8 +121,8 @@ class App extends React.Component {
   render() {
     const { savedCards, attributesNames } = this.state;
     return (
-      <main>
-        <h1>Tryunfo</h1>
+      <>
+        <header><h1>Tryunfo</h1></header>
         <section className="form-preview-section">
           <Form
             { ...this.state }
@@ -135,7 +137,7 @@ class App extends React.Component {
           removeCardFunc={ this.deleteCard }
           attributesNames={ attributesNames }
         />
-      </main>
+      </>
     );
   }
 }

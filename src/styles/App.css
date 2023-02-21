@@ -1,4 +1,13 @@
+* {
+  color: var(--page-font-color);
+}
+
+header {
+  padding: 50px;
+}
+
 h1 {
+  margin: 0;
   text-align: center;
 }
 
@@ -7,4 +16,9 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+main {
+  background-color: var(--page-background-color);
+  height: max-content;
 }

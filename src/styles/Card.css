@@ -1,4 +1,5 @@
 .card {
+  background-color: var(--card-background-color);
   border: 10px var(--page-font-color) solid;
   border-radius: 10px;
   height: 450px;
@@ -36,7 +37,7 @@
 .trunfo {
 
   /* align-items: center; */
-  background-color: white;
+  background-color: var(--card-background-color);
   display: flex;
   font-size: 20px;
   height: 40px;

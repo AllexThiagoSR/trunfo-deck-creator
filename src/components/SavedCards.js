@@ -27,13 +27,13 @@ class SavedCards extends React.Component {
       return (cardName.includes(filterName) && rarityFilter);
     });
     return (
-      <div className="saved-cards-container">
+      <section className="saved-cards-container">
         <Filters { ... this.state } onInputChange={ this.handleChangeFilters } />
         <ul>
           {
             filteredCards.map((card) => (
               <li key={ card.id }>
-                <div>
+                <div className="card-button-container">
                   <Card { ...card } attributesNames={ attributesNames } />
                   <button
                     data-testid="delete-button"
@@ -47,7 +47,7 @@ class SavedCards extends React.Component {
             ))
           }
         </ul>
-      </div>
+      </section>
     );
   }
 }

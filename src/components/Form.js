@@ -161,7 +161,16 @@ Form.propTypes = {
   hasTrunfo: PropTypes.bool.isRequired,
   attributesNames: PropTypes.objectOf(PropTypes.string),
   changeAttributesNames: PropTypes.func.isRequired,
-  savedCards: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
+  savedCards: PropTypes.arrayOf(PropTypes.shape({
+    cardName: PropTypes.string.isRequired,
+    cardDescription: PropTypes.string.isRequired,
+    cardImage: PropTypes.string.isRequired,
+    cardRare: PropTypes.string.isRequired,
+    cardTrunfo: PropTypes.bool.isRequired,
+    cardAttr1: PropTypes.string.isRequired,
+    cardAttr2: PropTypes.string.isRequired,
+    cardAttr3: PropTypes.string.isRequired,
+  })),
 };
 
 export default Form;

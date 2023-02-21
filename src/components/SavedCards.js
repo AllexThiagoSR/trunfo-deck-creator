@@ -18,7 +18,7 @@ class SavedCards extends React.Component {
   };
 
   render() {
-    const { cards, removeCardFunc } = this.props;
+    const { cards, removeCardFunc, attributesNames } = this.props;
     const filteredCards = cards.filter(({ cardName, cardRare, cardTrunfo }) => {
       const { filterName, filterRare, filterTrunfo } = this.state;
       if (filterTrunfo) return cardTrunfo;
@@ -34,7 +34,7 @@ class SavedCards extends React.Component {
             filteredCards.map((card) => (
               <li key={ card.id }>
                 <div>
-                  <Card { ...card } />
+                  <Card { ...card } attributesNames={ attributesNames } />
                   <button
                     data-testid="delete-button"
                     onClick={ removeCardFunc }
@@ -52,6 +52,14 @@ class SavedCards extends React.Component {
   }
 }
 
+SavedCards.defaultProps = {
+  attributesNames: {
+    attr1Name: 'Atributo 1',
+    attr2Name: 'Atributo 2',
+    attr3Name: 'Atributo 3',
+  },
+};
+
 SavedCards.propTypes = {
   cards: PropTypes.arrayOf(PropTypes.shape({
     cardName: PropTypes.string,
@@ -64,6 +72,7 @@ SavedCards.propTypes = {
     cardTrunfo: PropTypes.bool,
   })).isRequired,
   removeCardFunc: PropTypes.func.isRequired,
+  attributesNames: PropTypes.objectOf(PropTypes.string),
 };
 
 export default SavedCards;

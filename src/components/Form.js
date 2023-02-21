@@ -20,6 +20,9 @@ class Form extends React.Component {
       isSaveButtonDisabled,
       cardTrunfo,
       hasTrunfo,
+      attributesNames,
+      changeAttributesNames,
+      savedCards,
     } = this.props;
 
     const checkBoxInput = (<Input
@@ -72,7 +75,14 @@ class Form extends React.Component {
                   className="number-input"
                   htmlFor={ `attr${index + 1}` }
                 >
-                  { attr }
+                  <input
+                    type="text"
+                    name={ `attr${index + 1}Name` }
+                    value={ attributesNames[`attr${index + 1}Name`] }
+                    onChange={ changeAttributesNames }
+                    disabled={ savedCards.length !== 0 }
+                    className="attributesName"
+                  />
                   <br />
                   <input
                     id={ `attr${index + 1}` }
@@ -82,6 +92,7 @@ class Form extends React.Component {
                     onChange={ onInputChange }
                     data-testid={ `attr${index + 1}-input` }
                     key={ attr }
+                    className="attributesValues"
                   />
                 </label>
               ))
@@ -129,9 +140,17 @@ Form.defaultProps = { cardName: '',
   cardDescription: '',
   cardImage: '',
   cardRare: 'normal',
-  cardTrunfo: false };
+  cardTrunfo: false,
+  attributesNames: {
+    attr1Name: 'Atributo 1',
+    attr2Name: 'Atributo 2',
+    attr3Name: 'Atributo 3',
+  },
+  savedCards: [],
+};
 
-Form.propTypes = { onInputChange: PropTypes.func.isRequired,
+Form.propTypes = {
+  onInputChange: PropTypes.func.isRequired,
   cardName: PropTypes.string,
   cardDescription: PropTypes.string,
   cardImage: PropTypes.string,
@@ -139,6 +158,10 @@ Form.propTypes = { onInputChange: PropTypes.func.isRequired,
   cardTrunfo: PropTypes.bool,
   onSaveButtonClick: PropTypes.func.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired };
+  hasTrunfo: PropTypes.bool.isRequired,
+  attributesNames: PropTypes.objectOf(PropTypes.string),
+  changeAttributesNames: PropTypes.func.isRequired,
+  savedCards: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
+};
 
 export default Form;

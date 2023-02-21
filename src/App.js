@@ -18,6 +18,11 @@ class App extends React.Component {
     cardAttr3: '0',
     isSaveButtonDisabled: true,
     savedCards: [],
+    attributesNames: {
+      attr1Name: 'Atributo 1',
+      attr2Name: 'Atributo 2',
+      attr3Name: 'Atributo 3',
+    },
   };
 
   checkMissingInfos = (...infos) => infos.some((value) => value === '');
@@ -65,6 +70,14 @@ class App extends React.Component {
     }, this.checkDisableButtonConditions);
   };
 
+  changeAttributesNames = ({ target: { name, value } }) => {
+    const { attributesNames } = this.state;
+    attributesNames[name] = value;
+    this.setState({
+      attributesNames,
+    });
+  };
+
   createCardObject = () => {
     const quantityIdDig = 6;
     const { cardTrunfo } = this.state;
@@ -104,7 +117,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { savedCards } = this.state;
+    const { savedCards, attributesNames } = this.state;
     return (
       <main>
         <h1>Tryunfo</h1>
@@ -113,12 +126,14 @@ class App extends React.Component {
             { ...this.state }
             onInputChange={ this.handleChange }
             onSaveButtonClick={ this.handleClick }
+            changeAttributesNames={ this.changeAttributesNames }
           />
           <Card { ...this.state } />
         </section>
         <SavedCards
           cards={ savedCards }
           removeCardFunc={ this.deleteCard }
+          attributesNames={ attributesNames }
         />
       </main>
     );

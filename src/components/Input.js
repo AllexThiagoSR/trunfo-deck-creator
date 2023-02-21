@@ -41,12 +41,14 @@ Input.defaultProps = {
   checked: false,
   disabled: false,
   className: '',
+  labelText: '',
+  testid: '',
 };
 
 Input.propTypes = {
-  labelText: PropTypes.string.isRequired,
+  labelText: PropTypes.string,
   type: PropTypes.string.isRequired,
-  testid: PropTypes.string.isRequired,
+  testid: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
   handleChange: PropTypes.func.isRequired,

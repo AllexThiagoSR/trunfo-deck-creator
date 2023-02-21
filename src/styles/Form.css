@@ -16,14 +16,22 @@ fieldset {
 }
 
 .number-input {
-  width: 15%;
+  align-items: center;
+  display: flex;
+  width: fit-content;
 }
 
 .flex-container {
   display: flex;
+  flex-direction: column;
+  height: 100px;
   justify-content: space-around;
 }
 
-.number-input input {
-  width: 100%;
+.number-input .attributesValues {
+  width: 10%;
+}
+
+.number-input .attributesName {
+  margin: 0 20px 0 0;
 }

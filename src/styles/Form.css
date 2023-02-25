@@ -4,6 +4,16 @@
   width: 30%;
 }
 
+button {
+  background-color: #141e61;
+}
+
+button:disabled {
+  background-color: rgba(239, 239, 239, 0.3);
+  border-color: rgba(118, 118, 118, 0.3);
+  color: rgba(255, 255, 255, 0.3);
+}
+
 fieldset {
   display: flex;
   flex-direction: column;

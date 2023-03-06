@@ -3,7 +3,7 @@
   border: 10px var(--page-font-color) solid;
   border-radius: 10px;
   height: 450px;
-  padding: 30px;
+  padding: 30px 30px 10px;
   position: relative;
   width: 270px;
 }
@@ -16,8 +16,7 @@
 }
 
 .img-container {
-  height: 350px;
-  margin: 0 0 15px;
+  height: 340px;
 }
 
 .info-container {
@@ -35,21 +34,32 @@
 }
 
 .trunfo {
-
-  /* align-items: center; */
+  align-items: center;
   background-color: var(--card-background-color);
   display: flex;
+  flex-direction: column;
   font-size: 20px;
-  height: 40px;
-  justify-content: center;
-  left: 170px;
+  height: 60px;
+  justify-content: space-around;
+  left: 25px;
   position: absolute;
+  top: 290px;
+  transform: rotate(-5deg);
+  width: 280px;
+}
+
+.trunfo-text {
   text-transform: uppercase;
-  top: 339px;
-  transform: rotate(-30deg);
-  width: 152px;
 }
 
 .desc-card {
-  z-index: 1;
+  max-width: 270px;
+  overflow-wrap: break-word;
+  position: absolute;
+  top: 380px;
+}
+
+.attributes-container {
+  position: absolute;
+  top: 425px;
 }

@@ -27,21 +27,25 @@ class Card extends React.Component {
         <div className="info-container">
           <h2 data-testid="name-card" className="card-name">{ cardName }</h2>
           <p data-testid="description-card" className="desc-card">{ cardDescription }</p>
-          <p data-testid="attr1-card">
-            { `${attributesNames.attr1Name}: ${cardAttr1}` }
-          </p>
-          <p data-testid="attr2-card">
-            { `${attributesNames.attr2Name}: ${cardAttr2}` }
-          </p>
-          <p data-testid="attr3-card">
-            { `${attributesNames.attr3Name}: ${cardAttr3}` }
-          </p>
-          <p data-testid="rare-card">{ `Raridade: ${cardRare}` }</p>
-          {
-            cardTrunfo ? (
-              <p data-testid="trunfo-card" className="trunfo">Super Trunfo</p>
-            ) : ''
-          }
+          <div className="attributes-container">
+            <p data-testid="attr1-card">
+              { `${attributesNames.attr1Name}: ${cardAttr1}` }
+            </p>
+            <p data-testid="attr2-card">
+              { `${attributesNames.attr2Name}: ${cardAttr2}` }
+            </p>
+            <p data-testid="attr3-card">
+              { `${attributesNames.attr3Name}: ${cardAttr3}` }
+            </p>
+          </div>
+          <div className="trunfo">
+            {
+              cardTrunfo ? (
+                <p data-testid="trunfo-card" className="trunfo-text">Super Trunfo</p>
+              ) : ''
+            }
+            <p data-testid="rare-card">{ `Raridade: ${cardRare}` }</p>
+          </div>
         </div>
       </div>
     );
